@@ -1,3 +1,7 @@
+# Forked from
+
+https://gist.github.com/naholyr/4275302
+
 # Sample service script for debianoids
 
 Look at [LSB init scripts](http://wiki.debian.org/LSBInitScripts) for more information.
