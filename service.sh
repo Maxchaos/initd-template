@@ -15,13 +15,13 @@ PIDFILE=/var/run/<NAME>.pid
 LOGFILE=/var/log/<NAME>.log
 
 start() {
-  if [ -f /var/run/$PIDNAME ] && kill -0 $(cat /var/run/$PIDNAME); then
+  if [ -f "$PIDFILE" ] && kill -0 $(cat "$PIDFILE"); then
     echo 'Service already running' >&2
     return 1
   fi
   echo 'Starting service…' >&2
   local CMD="$SCRIPT &> \"$LOGFILE\" & echo \$!"
-  su -c "$CMD" $RUNAS > "$PIDFILE"
+  su -c "$CMD" ${RUNAS} > "$PIDFILE"
   echo 'Service started' >&2
 }
 
@@ -42,7 +42,7 @@ uninstall() {
   if [ "$SURE" = "yes" ]; then
     stop
     rm -f "$PIDFILE"
-    echo "Notice: log file is not be removed: '$LOGFILE'" >&2
+    echo "Notice: log file is not removed: '$LOGFILE'" >&2
     update-rc.d -f <NAME> remove
     rm -fv "$0"
   fi
@@ -58,7 +58,7 @@ case "$1" in
   uninstall)
     uninstall
     ;;
-  retart)
+  restart)
     stop
     start
     ;;

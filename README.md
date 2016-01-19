@@ -22,7 +22,7 @@ Edit the script and replace following tokens:
 * `<DESCRIPTION>` = Describe your service here (be concise)
 * Feel free to modify the LSB header, I've made default choices you may not agree with
 * `<COMMAND>` = Command to start your server (for example `/home/myuser/.dropbox-dist/dropboxd`)
-* `<USER>` = Login of the system user the script should be run as (for example `myuser`)
+* `<USERNAME>` = Login of the system user the script should be run as (for example `myuser`). If you want to use the current user set it as `$(whoami)`
 
 Start and test your service:
 
