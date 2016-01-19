@@ -48,35 +48,3 @@ Don't want it? Remove lines 56-58 of the service's script.
 ## Logs?
 
 Your service will log its output to `/var/log/$NAME.log`. Don't forget to setup a logrotate :)
-
-## I'm noob and/or lazy
-
-Yep, I'm lazy too. But still, I've written a script to automate this :)
-
-```sh
-wget 'https://raw.github.com/gist/4275302/new-service.sh' && bash new-service.sh
-```
-
-In this script I will download `service.sh` into a `tempfile`, replace some tokens, and then show you commands you should run as superuser.
-
-If you feel confident enough with my script, you can `sudo` the script directly:
-
-```sh
-wget 'https://raw.github.com/gist/4275302/new-service.sh' && sudo bash new-service.sh
-```
-
-Note: the cool hipsterish `curl $URL | bash` won't work here, I don't really want to check why.
-
-### Demo
-
-Creating the service:
-
-![service-create](http://dl.dropbox.com/u/6414656/gist-4275302/service-create.png)
-
-Looking at service files (logs, pid):
-
-![service-files](http://dl.dropbox.com/u/6414656/gist-4275302/service-files.png)
-
-Uninstalling service:
-
-![service-uninstall](http://dl.dropbox.com/u/6414656/gist-4275302/service-uninstall.png)
