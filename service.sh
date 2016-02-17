@@ -1,8 +1,8 @@
 #!/bin/sh
 ### BEGIN INIT INFO
 # Provides:          <NAME>
-# Required-Start:    $local_fs $network $named $time $syslog
-# Required-Stop:     $local_fs $network $named $time $syslog
+# Required-Start:    $local_fs $network $syslog
+# Required-Stop:     $local_fs $network $syslog
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
 # Description:       <DESCRIPTION>
@@ -20,8 +20,8 @@ start() {
     return 1
   fi
   echo 'Starting service…' >&2
-  local CMD="$SCRIPT &> \"$LOGFILE\" & echo \$!"
-  su -c "$CMD" ${RUNAS} > "$PIDFILE"
+  ${SCRIPT} >> "$LOGFILE" &
+  echo $! > "$PIDFILE"
   echo 'Service started' >&2
 }
 
